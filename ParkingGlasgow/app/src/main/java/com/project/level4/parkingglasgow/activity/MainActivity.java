@@ -1,4 +1,4 @@
-package com.project.level4.parkingglasgow;
+package com.project.level4.parkingglasgow.activity;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -9,6 +9,17 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.project.level4.parkingglasgow.R;
+
+
+/**
+ * This will be starting page of app. Create further Activities (pages) for each screen of the app.
+ * Code here is just hello world code that comes with creating a new project. Not my work or coding
+ * for the app.
+ *
+ * layouts are created as xml in the res package under layout. feel free to start there before
+ * any programming starts
+ */
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -26,6 +37,31 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
     }
 
     @Override
