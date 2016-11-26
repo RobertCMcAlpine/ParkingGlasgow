@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<food>
+    <name>French Toast</name>
+    <price>$4.50</price>
+    <description>Thick slices made from our homemade sourdough bread</description>
+    <calories>600</calories>
+</food>

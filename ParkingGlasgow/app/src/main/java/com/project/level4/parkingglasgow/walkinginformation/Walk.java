@@ -21,5 +21,6 @@ public class Walk {
         // TODO
         // Given two locations, determine time to reach location from speed of walking (3mph) between
         // two locations. Should be possible with google maps apis.
+        return (0);
     }
 }

@@ -1,7 +1,23 @@
 package com.project.level4.parkingglasgow.parkinginformation;
 
 import android.location.GpsSatellite;
+import java.io.InputStream;
+import java.io.IOException;
+import java.io.StringReader;
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserException;
+import org.xmlpull.v1.XmlPullParserFactory;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import android.app.Activity;
+import android.os.Bundle;
+import android.widget.TextView;
 
+/*
 /**
  * Created by Rob on 11/23/16.
  */
@@ -15,6 +31,7 @@ import android.location.GpsSatellite;
  *
  * NOTE/ also, these classes have incomplete,statements and will come up as errors!
  */
+/*
 public class ParkingInfo {
     GpsSatellite destinatioLocation;
 
@@ -31,7 +48,7 @@ public class ParkingInfo {
     }
 
     public ParkingLot getParkingLot(){
-        /**
+        /*
          *  boolean status = false;
          *  ParkingLot parkingLot = getNearestParkingLot()
          *  while status != true {
@@ -42,7 +59,10 @@ public class ParkingInfo {
          *          find another parkingLot
          *      }
          *  }
-         */
-        // return parkingLot
+
+        ParkingLot parkingLot = null;
+        return parkingLot;
+
     }
 }
+*/

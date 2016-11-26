@@ -5,13 +5,13 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.project.level4.parkingglasgow.R;
-
-
+import  com.project.level4.parkingglasgow.readXmlFile;
 /**
  * This will be starting page of app. Create further Activities (pages) for each screen of the app.
  * Code here is just hello world code that comes with creating a new project. Not my work or coding
@@ -22,6 +22,7 @@ import com.project.level4.parkingglasgow.R;
  */
 public class MainActivity extends AppCompatActivity {
 
+    readXmlFile xmlreadobject;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+
             }
         });
     }
@@ -68,6 +70,10 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
+        Log.d("myTag", "This is my message");
+        xmlreadobject = new readXmlFile();
+        //xmlreadobject.something();
+        xmlreadobject.main(this);
         return true;
     }
 
