@@ -17,7 +17,7 @@ public class Walk {
     public double getTimeToArrival(){
         double time = 0;
         double speed = 0;
-
+        return time;
         // TODO
         // Given two locations, determine time to reach location from speed of walking (3mph) between
         // two locations. Should be possible with google maps apis.

@@ -6,10 +6,12 @@ android {
 
     defaultConfig {
         applicationId "com.project.level4.parkingglasgow"
-        minSdkVersion 18
+        minSdkVersion 23
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
+        // Enabling multidex support.
+        multiDexEnabled true
     }
     buildTypes {
         release {
@@ -22,6 +24,10 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:23.1.1'
-    compile 'com.android.support:design:23.1.1'
+    compile 'com.android.support:appcompat-v7:+'
+    compile 'com.android.support:design:23.0.1'
+    compile 'com.google.android.gms:play-services:9.8.0'
+    compile 'com.google.android.gms:play-services-ads:9.8.0'
+    compile 'com.google.android.gms:play-services-identity:9.8.0'
+    compile 'com.google.android.gms:play-services-gcm:9.8.0'
 }

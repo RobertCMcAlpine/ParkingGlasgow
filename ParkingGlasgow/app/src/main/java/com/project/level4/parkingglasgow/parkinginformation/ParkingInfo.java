@@ -22,27 +22,27 @@ public class ParkingInfo {
         this.destinatioLocation = destinationLocation;
     }
 
-    protected ParkingLot getNearestParkingLot(){
-        ParkingLot parkingLot = new ParkingLot();
-        // determine nearest parking lot, might be worth creating an array of nearest parking lots
-        // that is sorted from nearest to furthest, then working through them with getParkingLot()
-        // method.
-        return parkingLot;
-    }
-
-    public ParkingLot getParkingLot(){
-        /**
-         *  boolean status = false;
-         *  ParkingLot parkingLot = getNearestParkingLot()
-         *  while status != true {
-         *      if nearest parkingLot to destinationLocation isn't full/near full{
-         *          use this parkingLot
-         *          status = true;
-         *      } else {
-         *          find another parkingLot
-         *      }
-         *  }
-         */
-        // return parkingLot
-    }
+//    protected ParkingLot getNearestParkingLot(){
+//        ParkingLot parkingLot = new ParkingLot();
+//        // determine nearest parking lot, might be worth creating an array of nearest parking lots
+//        // that is sorted from nearest to furthest, then working through them with getParkingLot()
+//        // method.
+//        return parkingLot;
+//    }
+//
+//    public ParkingLot getParkingLot(){
+//        /**
+//         *  boolean status = false;
+//         *  ParkingLot parkingLot = getNearestParkingLot()
+//         *  while status != true {
+//         *      if nearest parkingLot to destinationLocation isn't full/near full{
+//         *          use this parkingLot
+//         *          status = true;
+//         *      } else {
+//         *          find another parkingLot
+//         *      }
+//         *  }
+//         */
+//        // return parkingLot
+//    }
 }

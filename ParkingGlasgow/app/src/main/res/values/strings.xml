@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">ParkingGlasgow</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_maps">Map</string>
+
+    <!-- Button names -->
+    <string name="route_plan_button">Route Planner</string>
+    <string name="route_hitsory_button">Route History</string>
+    <string name="quit_button">Quit</string>
 </resources>
