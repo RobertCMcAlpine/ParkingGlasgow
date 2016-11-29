@@ -1,48 +1,114 @@
-package com.project.level4.parkingglasgow.parkinginformation;
+ppackage com.project.level4.parkingglasgow.parkinginformation;
+import android.content.Context;
+import android.content.res.AssetManager;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.Charset;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import android.location.Location;
 
-import android.location.GpsSatellite;
-
+/*
 /**
  * Created by Rob on 11/23/16.
  */
 
-/**
- * you will have to dummy gps locations for development. The app will pass in real gps locations once
- * compete. It should not matter for developement. Figure out how to dummy gps locations and then start
- *
- * this is just my guess as to how these classes should funciton, feel free to change how you want.
- * If you need to add new classes, please create them inside the 'parkinginformation' package.
- *
- * NOTE/ also, these classes have incomplete,statements and will come up as errors!
- */
 public class ParkingInfo {
-    GpsSatellite destinatioLocation;
 
-    public ParkingInfo(GpsSatellite destinationLocation){
-        this.destinatioLocation = destinationLocation;
+
+    List<ParkingLot> parkingLotList = new ArrayList<ParkingLot>();
+    Location destinationLocation;
+    String[] RowData;
+
+    public ParkingInfo(Context context,Location destinationLocation)
+    {
+        this.destinationLocation = destinationLocation;
+        this.readCSV(context);
     }
 
-//    protected ParkingLot getNearestParkingLot(){
-//        ParkingLot parkingLot = new ParkingLot();
-//        // determine nearest parking lot, might be worth creating an array of nearest parking lots
-//        // that is sorted from nearest to furthest, then working through them with getParkingLot()
-//        // method.
-//        return parkingLot;
-//    }
-//
-//    public ParkingLot getParkingLot(){
-//        /**
-//         *  boolean status = false;
-//         *  ParkingLot parkingLot = getNearestParkingLot()
-//         *  while status != true {
-//         *      if nearest parkingLot to destinationLocation isn't full/near full{
-//         *          use this parkingLot
-//         *          status = true;
-//         *      } else {
-//         *          find another parkingLot
-//         *      }
-//         *  }
-//         */
-//        // return parkingLot
-//    }
+
+    //Determines nearest non-full parking lot
+
+    private ParkingLot findParkingLot()
+    {
+        int i = 0;
+        for (; i < parkingLotList.size(); i++) {
+            if ( (parkingLotList.get(i).getParkingLoad() != "Full"))
+            {
+                break;
+            }
+        }
+        return parkingLotList.get(i);
+    }
+
+
+    public String getParkingLot() {
+        ParkingLot closestLot = findParkingLot();
+       // return closestLot;
+        return closestLot.name;
+    }
+
+    //Provides absolute distance between two coords, does not take into account road paths
+    public float getDistance(Location destinationLocation, Location parkingLotLocation)
+    {
+        float distance =  destinationLocation.distanceTo(parkingLotLocation);
+        return distance;
+    }
+
+
+
+
+    private void readCSV(Context context){
+     AssetManager assetManager = context.getAssets();
+     InputStream is = null;
+       Location inputLocation = new Location("");
+        float inputDistance;
+        int inputParkedCars;
+        int inputCapacity;
+        String inputName;
+
+        try {
+            is = assetManager.open("carParks.csv");
+        } catch (IOException e) {
+        e.printStackTrace();
+        }
+
+        BufferedReader reader = null;
+        reader = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
+
+
+        try {
+        String line;
+        while ((line = reader.readLine()) != null) {
+        RowData = line.split(",");
+
+          inputLocation.setLatitude(Float.valueOf((String)RowData[1]));
+            inputLocation.setLongitude(Float.valueOf((String)RowData[2]));
+            inputName = RowData[0];
+            inputDistance = getDistance(destinationLocation,inputLocation);
+            inputParkedCars = Integer.valueOf(RowData[3]);
+            inputCapacity = Integer.valueOf(RowData[4]);
+
+           ParkingLot test = new ParkingLot(inputLocation,inputCapacity,inputParkedCars,inputDistance,inputName);
+             parkingLotList.add(test);
+        }
+        }
+        catch (IOException ex) {
+        // handle exception
+        }
+        finally {
+        try {
+        is.close();
+        }
+        catch (IOException e) {
+        // handle exception
+        }
+        }
+        //Sort parkingLotList in descending order for distance
+        Collections.sort(parkingLotList);
+        return;
+    }
 }
