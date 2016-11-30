@@ -45,6 +45,8 @@ public class RoutePlannerActivity2 extends AppCompatActivity implements AdapterV
     private TextView time;
     private Calendar calendar;
     private String format = "";
+    private String startAddress;
+    String selection;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,9 +54,19 @@ public class RoutePlannerActivity2 extends AppCompatActivity implements AdapterV
         setContentView(R.layout.activity_route_planner2);
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar2);
         setSupportActionBar(myToolbar);
+
+        Intent intent = getIntent();
+        startAddress = intent.getExtras().getString("location");
+
         AutoCompleteTextView autoCompView = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView2);
         autoCompView.setAdapter(new GooglePlacesAutocompleteAdapter(this, R.layout.list_item));
         autoCompView.setOnItemClickListener(this);
+
+        autoCompView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long rowId) {
+                selection = (String)parent.getItemAtPosition(position);
+            }
+        });
 
 
         timePicker2 = (TimePicker) findViewById(R.id.timePicker2);
@@ -206,8 +218,12 @@ public class RoutePlannerActivity2 extends AppCompatActivity implements AdapterV
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
-                startActivity(intent);
+                if (selection != null) {
+                    Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
+                    intent.putExtra("startAddress", startAddress);
+                    intent.putExtra("destinationAddress", selection);
+                    startActivity(intent);
+                }
             }
         });
     }

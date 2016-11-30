@@ -4,6 +4,8 @@ package com.project.level4.parkingglasgow.activity;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
@@ -34,6 +36,7 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 public class RoutePlannerActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
     private static final String LOG_TAG = "Google Places Autocomplete";
@@ -46,6 +49,7 @@ public class RoutePlannerActivity extends AppCompatActivity implements AdapterVi
     private TextView time;
     private Calendar calendar;
     private String format = "";
+    private String selection;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,8 +61,12 @@ public class RoutePlannerActivity extends AppCompatActivity implements AdapterVi
 
         AutoCompleteTextView autoCompView = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView);
         autoCompView.setAdapter(new GooglePlacesAutocompleteAdapter(this, R.layout.list_item));
-        autoCompView.setOnItemClickListener(this);
 
+        autoCompView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long rowId) {
+                selection = (String)parent.getItemAtPosition(position);
+            }
+        });
 
         timePicker1 = (TimePicker) findViewById(R.id.timePicker1);
         calendar = Calendar.getInstance();
@@ -217,8 +225,11 @@ public class RoutePlannerActivity extends AppCompatActivity implements AdapterVi
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), RoutePlannerActivity2.class);
-                startActivity(intent);
+                if (selection != null) {
+                    Intent intent = new Intent(getApplicationContext(), RoutePlannerActivity2.class);
+                    intent.putExtra("location", selection);
+                    startActivity(intent);
+                }
             }
         });
     }
