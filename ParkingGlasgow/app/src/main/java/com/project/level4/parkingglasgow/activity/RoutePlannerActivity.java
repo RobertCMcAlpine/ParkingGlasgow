@@ -50,6 +50,7 @@ public class RoutePlannerActivity extends AppCompatActivity implements AdapterVi
     private Calendar calendar;
     private String format = "";
     private String selection;
+    private AutoCompleteTextView autoCompView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,12 +60,12 @@ public class RoutePlannerActivity extends AppCompatActivity implements AdapterVi
         setSupportActionBar(myToolbar);
 
 
-        AutoCompleteTextView autoCompView = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView);
+        autoCompView = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView);
         autoCompView.setAdapter(new GooglePlacesAutocompleteAdapter(this, R.layout.list_item));
 
         autoCompView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long rowId) {
-                selection = (String)parent.getItemAtPosition(position);
+                selection = (String) parent.getItemAtPosition(position);
             }
         });
 
@@ -225,11 +226,13 @@ public class RoutePlannerActivity extends AppCompatActivity implements AdapterVi
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), RoutePlannerActivity2.class);
                 if (selection != null) {
-                    Intent intent = new Intent(getApplicationContext(), RoutePlannerActivity2.class);
                     intent.putExtra("location", selection);
-                    startActivity(intent);
+                } else {
+                    intent.putExtra("location", autoCompView.getText().toString());
                 }
+                startActivity(intent);
             }
         });
     }

@@ -2,6 +2,7 @@ package com.project.level4.parkingglasgow.activity;
 
 import android.Manifest;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Build;
@@ -49,6 +50,13 @@ public class MapsActivity extends FragmentActivity
 
         mapFrag = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFrag.getMapAsync(this);
+
+        Intent intent = getIntent();
+        String startAddress = intent.getExtras().getString("startAddress");
+        String destinationAddress = intent.getExtras().getString("destinationAddress");
+
+        System.out.println("START: " + startAddress);
+        System.out.println("DESTINATION: " + destinationAddress);
     }
 
     @Override

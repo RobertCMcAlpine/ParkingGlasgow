@@ -46,7 +46,8 @@ public class RoutePlannerActivity2 extends AppCompatActivity implements AdapterV
     private Calendar calendar;
     private String format = "";
     private String startAddress;
-    String selection;
+    private String selection;
+    private AutoCompleteTextView autoCompView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +59,7 @@ public class RoutePlannerActivity2 extends AppCompatActivity implements AdapterV
         Intent intent = getIntent();
         startAddress = intent.getExtras().getString("location");
 
-        AutoCompleteTextView autoCompView = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView2);
+        autoCompView = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView2);
         autoCompView.setAdapter(new GooglePlacesAutocompleteAdapter(this, R.layout.list_item));
         autoCompView.setOnItemClickListener(this);
 
@@ -218,12 +219,14 @@ public class RoutePlannerActivity2 extends AppCompatActivity implements AdapterV
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
+                intent.putExtra("startAddress", startAddress);
                 if (selection != null) {
-                    Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
-                    intent.putExtra("startAddress", startAddress);
                     intent.putExtra("destinationAddress", selection);
-                    startActivity(intent);
+                } else {
+                    intent.putExtra("destinationAddress", autoCompView.getText().toString());
                 }
+                startActivity(intent);
             }
         });
     }
