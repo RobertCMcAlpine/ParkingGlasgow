@@ -1,4 +1,4 @@
-ppackage com.project.level4.parkingglasgow.parkinginformation;
+package com.project.level4.parkingglasgow.parkinginformation;
 import android.content.Context;
 import android.content.res.AssetManager;
 import java.io.BufferedReader;

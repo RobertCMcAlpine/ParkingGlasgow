@@ -22,3 +22,4 @@ public class TrainStation {
     public Location getLocation() {
         return location;
     }
+}
