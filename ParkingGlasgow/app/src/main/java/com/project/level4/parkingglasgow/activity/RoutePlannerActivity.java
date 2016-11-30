@@ -52,6 +52,9 @@ public class RoutePlannerActivity extends AppCompatActivity implements AdapterVi
     private String selection;
     private AutoCompleteTextView autoCompView;
 
+    private int hourS;
+    private int minuteS;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -226,12 +229,17 @@ public class RoutePlannerActivity extends AppCompatActivity implements AdapterVi
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                hourS = timePicker1.getHour();
+                minuteS = timePicker1.getMinute();
+
                 Intent intent = new Intent(getApplicationContext(), RoutePlannerActivity2.class);
                 if (selection != null) {
                     intent.putExtra("location", selection);
                 } else {
                     intent.putExtra("location", autoCompView.getText().toString());
                 }
+                intent.putExtra("start_hour", hourS);
+                intent.putExtra("start_minute",minuteS);
                 startActivity(intent);
             }
         });

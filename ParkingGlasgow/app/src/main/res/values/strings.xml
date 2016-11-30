@@ -29,4 +29,5 @@
     <string name="time_save2">Save</string>
     <string name="time_selected2"></string>
     <string name="time_current2">The Time is:</string>
+    <string name="title_activity_path_google_map">PathGoogleMapActivity</string>
 </resources>

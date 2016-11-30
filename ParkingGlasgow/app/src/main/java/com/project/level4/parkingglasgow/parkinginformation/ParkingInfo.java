@@ -51,6 +51,11 @@ public class ParkingInfo {
         return closestLot.name;
     }
 
+    public Location getLocationOfParkingLot() {
+        ParkingLot closestLot = findParkingLot();
+        return closestLot.getLocation();
+    }
+
     //Provides absolute distance between two coords, does not take into account road paths
     public float getDistance(Location destinationLocation, Location parkingLotLocation)
     {

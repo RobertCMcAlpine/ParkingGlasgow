@@ -63,4 +63,8 @@ public class ParkingLot implements Comparable <ParkingLot> {
         float comparedistance = compareLots.distance;
         return (int)this.distance - (int)comparedistance;
     }
+
+    public Location getLocation(){
+        return ParkingLotLocation;
+    }
 }

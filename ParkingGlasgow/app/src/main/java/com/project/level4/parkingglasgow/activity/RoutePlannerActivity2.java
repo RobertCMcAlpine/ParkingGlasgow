@@ -49,6 +49,11 @@ public class RoutePlannerActivity2 extends AppCompatActivity implements AdapterV
     private String selection;
     private AutoCompleteTextView autoCompView;
 
+    private int hourS;
+    private int minuteS;
+    private int hourD;
+    private int minuteD;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,6 +63,8 @@ public class RoutePlannerActivity2 extends AppCompatActivity implements AdapterV
 
         Intent intent = getIntent();
         startAddress = intent.getExtras().getString("location");
+        hourS = intent.getIntExtra("start_hour", 0);
+        minuteS = intent.getIntExtra("start_minute", 0);
 
         autoCompView = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView2);
         autoCompView.setAdapter(new GooglePlacesAutocompleteAdapter(this, R.layout.list_item));
@@ -219,6 +226,8 @@ public class RoutePlannerActivity2 extends AppCompatActivity implements AdapterV
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                hourD = timePicker2.getHour();
+                minuteD = timePicker2.getMinute();
                 Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
                 intent.putExtra("startAddress", startAddress);
                 if (selection != null) {
@@ -226,6 +235,10 @@ public class RoutePlannerActivity2 extends AppCompatActivity implements AdapterV
                 } else {
                     intent.putExtra("destinationAddress", autoCompView.getText().toString());
                 }
+                intent.putExtra("start_hour", hourS);
+                intent.putExtra("start_minute",minuteS);
+                intent.putExtra("destination_hour", hourD);
+                intent.putExtra("destination_minute",minuteD);
                 startActivity(intent);
             }
         });
