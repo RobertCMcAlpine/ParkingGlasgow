@@ -23,7 +23,7 @@
         android:id="@+id/route_plan_button"
         android:text="@string/route_plan_button"
         android:layout_width="200dp"
-        android:layout_height="wrap_content"
+        android:layout_height="75dp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:layout_below="@id/anchor"/>
@@ -31,7 +31,7 @@
         android:id="@+id/route_history_button"
         android:text="@string/route_hitsory_button"
         android:layout_width="200dp"
-        android:layout_height="wrap_content"
+        android:layout_height="75dp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:layout_below="@id/route_plan_button"/>

@@ -7,4 +7,26 @@
     <string name="route_plan_button">Route Planner</string>
     <string name="route_hitsory_button">Route History</string>
     <string name="quit_button">Quit</string>
+    <string name="title_activity_route_planner">RoutePlannerActivity</string>
+
+    <!-- RoutePlannerActivity -->
+    <string name="toolbar_text">Start Location</string>
+    <string name="time_picker_example">Time Picker Example</string>
+    <string name="location_text">Enter starting address or location</string>
+    <string name="time_pick">Pick the time and press save button</string>
+    <string name="ok">OK</string>
+    <string name="time_save">Save</string>
+    <string name="time_selected"></string>
+    <string name="time_current">The Time is:</string>
+    <string name="title_activity_route_planner2">RoutePlannerActivity2</string>
+
+    <!-- RoutePlannerActivity -->
+    <string name="toolbar_text2">Destination Location</string>
+    <string name="time_picker_example2">Time Picker Example</string>
+    <string name="location_text2">Enter destination address or location</string>
+    <string name="time_pick2">Pick the time and press save button</string>
+    <string name="ok2">OK</string>
+    <string name="time_save2">Save</string>
+    <string name="time_selected2"></string>
+    <string name="time_current2">The Time is:</string>
 </resources>

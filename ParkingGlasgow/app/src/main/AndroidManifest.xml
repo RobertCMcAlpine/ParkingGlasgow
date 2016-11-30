@@ -42,8 +42,16 @@
             android:name=".activity.MapsActivity"
             android:label="@string/title_activity_maps" >
         </activity>
+        <activity
+            android:name=".activity.RoutePlannerActivity"
+            android:label="@string/title_activity_route_planner"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
+        <activity
+            android:name=".activity.RoutePlannerActivity2"
+            android:label="@string/title_activity_route_planner2"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
     </application>
-
-
 
 </manifest>
