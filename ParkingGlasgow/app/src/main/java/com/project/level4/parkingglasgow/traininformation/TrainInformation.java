@@ -87,7 +87,6 @@ public class TrainInformation {
         TrainStation inputStation;
         AssetManager assetManager = context.getAssets();
         InputStream is = null;
-        Location inputLocation = new Location("");
         String inputName;
         try {
             is = assetManager.open("subwayStops.csv");
@@ -103,6 +102,7 @@ public class TrainInformation {
             String line;
             while ((line = reader.readLine()) != null) {
                 RowData = line.split(",");
+                Location inputLocation = new Location("");
                 inputLocation.setLatitude(Float.valueOf((String)RowData[1]));
                 inputLocation.setLongitude(Float.valueOf((String)RowData[2]));
                 inputName = RowData[0];

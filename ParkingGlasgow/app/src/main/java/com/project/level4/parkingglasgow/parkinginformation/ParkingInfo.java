@@ -69,7 +69,6 @@ public class ParkingInfo {
     private void readCSV(Context context){
      AssetManager assetManager = context.getAssets();
      InputStream is = null;
-       Location inputLocation = new Location("");
         float inputDistance;
         int inputParkedCars;
         int inputCapacity;
@@ -89,7 +88,7 @@ public class ParkingInfo {
         String line;
         while ((line = reader.readLine()) != null) {
         RowData = line.split(",");
-
+        Location inputLocation = new Location("");
           inputLocation.setLatitude(Float.valueOf((String)RowData[1]));
             inputLocation.setLongitude(Float.valueOf((String)RowData[2]));
             inputName = RowData[0];
